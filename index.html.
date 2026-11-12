@@ -1,54 +1,421 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GLOBAL AI BUSINESS AGENT</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 30px;
-      font-family: Arial, sans-serif;
-      background: #101827;
-      color: white;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLOBAL AI BUSINESS AGENT</title>
 
-    h1 {
-      color: #38bdf8;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    .card {
-      background: #1e293b;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 12px;
-    }
-  </style>
+body {
+  font-family: Arial, sans-serif;
+  background: #0b1120;
+  color: #e5e7eb;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background: #111b2e;
+  padding: 25px 15px;
+  border-right: 1px solid #263650;
+}
+
+.logo {
+  color: #38bdf8;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.5;
+  margin-bottom: 35px;
+}
+
+.logo span {
+  display: block;
+  color: #94a3b8;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.nav-title {
+  color: #64748b;
+  font-size: 11px;
+  margin: 25px 10px 12px;
+}
+
+.nav a {
+  display: block;
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 13px 10px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.nav a:hover,
+.nav a.active {
+  background: #1e3a5f;
+  color: #38bdf8;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 28px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.topbar h1 {
+  font-size: 24px;
+}
+
+.subtitle {
+  color: #94a3b8;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.status {
+  background: #17352d;
+  color: #4ade80;
+  padding: 9px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.section-title {
+  font-size: 18px;
+  margin: 28px 0 15px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.card, .panel, .agent {
+  background: #142137;
+  border: 1px solid #263650;
+  border-radius: 12px;
+  padding: 19px;
+}
+
+.card-label {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.card-value {
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 13px;
+}
+
+.blue { color: #38bdf8; }
+.green { color: #4ade80; }
+.orange { color: #fbbf24; }
+
+.panel {
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.panel h3 {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+table {
+  width: 100%;
+  min-width: 550px;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+th, td {
+  padding: 14px 10px;
+  text-align: left;
+  border-bottom: 1px solid #29374c;
+}
+
+th {
+  color: #94a3b8;
+  font-weight: normal;
+}
+
+.tag {
+  background: #164e3b;
+  color: #4ade80;
+  padding: 6px 9px;
+  border-radius: 6px;
+  font-size: 10px;
+}
+
+.agents {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.agent h4 {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.agent p {
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.agent-status {
+  color: #fbbf24;
+  font-size: 11px;
+  margin-top: 15px;
+}
+
+.info {
+  color: #94a3b8;
+  font-size: 11px;
+  margin-top: 12px;
+}
+
+.footer {
+  color: #64748b;
+  font-size: 11px;
+  margin-top: 35px;
+  text-align: center;
+}
+
+@media (max-width: 850px) {
+  .sidebar { width: 190px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .agents { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .layout { display: block; }
+  .sidebar {
+    width: 100%;
+    padding: 15px;
+    border-right: none;
+    border-bottom: 1px solid #263650;
+  }
+  .logo { margin-bottom: 15px; }
+  .nav-title { display: none; }
+  .nav {
+    display: flex;
+    overflow-x: auto;
+    gap: 5px;
+  }
+  .nav a {
+    white-space: nowrap;
+    margin: 0;
+    padding: 10px;
+  }
+  .main { padding: 18px 13px; }
+  .topbar h1 { font-size: 19px; }
+  .status { font-size: 10px; }
+  .agents { grid-template-columns: 1fr; }
+  .card { padding: 14px; }
+  .card-value { font-size: 22px; }
+}
+</style>
 </head>
+
 <body>
 
-  <h1>GLOBAL AI BUSINESS AGENT</h1>
-  <p>Global AI Business Intelligence Platform</p>
+<div class="layout">
 
+<aside class="sidebar">
+  <div class="logo">
+    GLOBAL AI
+    BUSINESS AGENT
+    <span>INTELLIGENCE PLATFORM</span>
+  </div>
+
+  <div class="nav-title">MAIN MENU</div>
+
+  <nav class="nav">
+    <a href="#dashboard" class="active">Dashboard</a>
+    <a href="#opportunities">Opportunities</a>
+    <a href="#analysis">Business Analysis</a>
+    <a href="#agents">AI Agents</a>
+    <a href="#performance">Performance</a>
+  </nav>
+</aside>
+
+<main class="main">
+
+<header class="topbar" id="dashboard">
+  <div>
+    <h1>Dashboard</h1>
+    <p class="subtitle">
+      Global Business Intelligence & Automation
+    </p>
+  </div>
+  <div class="status">● SYSTEM READY</div>
+</header>
+
+<h2 class="section-title">Overview</h2>
+
+<section class="stats">
   <div class="card">
-    <h2>Dashboard</h2>
-    <p>Welcome to your AI Business Agent.</p>
+    <div class="card-label">Business Opportunities</div>
+    <div class="card-value blue">2</div>
   </div>
 
   <div class="card">
-    <h2>Market Opportunities</h2>
-    <p>Discover real business problems worldwide.</p>
+    <div class="card-label">High Priority</div>
+    <div class="card-value green">1</div>
   </div>
 
   <div class="card">
-    <h2>Business Analysis</h2>
-    <p>Evaluate demand, competition and profitability.</p>
+    <div class="card-label">AI Agents</div>
+    <div class="card-value blue">7</div>
   </div>
 
   <div class="card">
-    <h2>AI Agents</h2>
-    <p>Manage your intelligent business agents.</p>
+    <div class="card-label">Revenue</div>
+    <div class="card-value orange">0 €</div>
   </div>
+</section>
+
+<h2 class="section-title" id="opportunities">
+  Market Opportunities
+</h2>
+
+<section class="panel">
+  <h3>Opportunity Database</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Opportunity</th>
+        <th>Score</th>
+        <th>Priority</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Dental Clinic AI Chatbot</td>
+        <td>82/100</td>
+        <td><span class="tag">EXCELLENT</span></td>
+      </tr>
+
+      <tr>
+        <td>Hotel AI Assistant</td>
+        <td>78/100</td>
+        <td><span class="tag">GOOD</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="info">
+    Scores are preliminary estimates, not validated market evidence.
+  </p>
+</section>
+
+<h2 class="section-title" id="analysis">
+  Business Analysis
+</h2>
+
+<section class="panel">
+  <h3>Analysis Engine</h3>
+  <p class="subtitle">
+    Discover real company problems, validate demand,
+    evaluate competition and estimate profitability.
+  </p>
+  <p class="info">
+    Analysis engine: Not connected yet.
+  </p>
+</section>
+
+<h2 class="section-title" id="agents">
+  AI Agent Architecture
+</h2>
+
+<section class="agents">
+
+  <div class="agent">
+    <h4>AI CEO</h4>
+    <p>Central intelligence and coordination.</p>
+    <div class="agent-status">● Planned</div>
+  </div>
+
+  <div class="agent">
+    <h4>Market Agent</h4>
+    <p>Discover market needs and business problems.</p>
+    <div class="agent-status">● Planned</div>
+  </div>
+
+  <div class="agent">
+    <h4>Business Analyst</h4>
+    <p>Validate and evaluate opportunities.</p>
+    <div class="agent-status">● Planned</div>
+  </div>
+
+  <div class="agent">
+    <h4>Product Agent</h4>
+    <p>Design solutions and business offers.</p>
+    <div class="agent-status">● Planned</div>
+  </div>
+
+  <div class="agent">
+    <h4>Builder Agent</h4>
+    <p>Build AI solutions and automation systems.</p>
+    <div class="agent-status">● Planned</div>
+  </div>
+
+  <div class="agent">
+    <h4>Sales Agent</h4>
+    <p>Identify prospects and support sales.</p>
+    <div class="agent-status">● Planned</div>
+  </div>
+
+  <div class="agent">
+    <h4>Customer Agent</h4>
+    <p>Customer support and follow-up.</p>
+    <div class="agent-status">● Planned</div>
+  </div>
+
+  <div class="agent" id="performance">
+    <h4>Revenue Agent</h4>
+    <p>Monitor revenue, KPIs and performance.</p>
+    <div class="agent-status">● Planned</div>
+  </div>
+
+</section>
+
+<div class="footer">
+  GLOBAL AI BUSINESS AGENT © 2026
+  <br>
+  Intelligent Business Operating System
+</div>
+
+</main>
+</div>
 
 </body>
 </html>
