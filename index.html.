@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLOBAL AI BUSINESS AGENT</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 30px;
+      font-family: Arial, sans-serif;
+      background: #101827;
+      color: white;
+    }
+
+    h1 {
+      color: #38bdf8;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>GLOBAL AI BUSINESS AGENT</h1>
+  <p>Global AI Business Intelligence Platform</p>
+
+  <div class="card">
+    <h2>Dashboard</h2>
+    <p>Welcome to your AI Business Agent.</p>
+  </div>
+
+  <div class="card">
+    <h2>Market Opportunities</h2>
+    <p>Discover real business problems worldwide.</p>
+  </div>
+
+  <div class="card">
+    <h2>Business Analysis</h2>
+    <p>Evaluate demand, competition and profitability.</p>
+  </div>
+
+  <div class="card">
+    <h2>AI Agents</h2>
+    <p>Manage your intelligent business agents.</p>
+  </div>
+
+</body>
+</html>
